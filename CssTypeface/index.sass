@@ -1,0 +1,287 @@
+@mixin regular
+  font-family: 'Roboto', Helvetica, sans-serif
+  font-size: 14px
+
+@mixin mono
+  font-family: 'Roboto Mono', Helvetica, sans-serif
+  font-size: 14px
+
+@mixin narrow
+  font-family: 'Roboto Condensed', Helvetica, sans-serif
+  font-family: 14px
+
+////////////////////////////////////////////////////////////////////////
+
+  
+html, body
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+*
+  box-sizing: border-box
+  margin: 0
+
+.cover-image
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+
+.page
+  position: absolute
+  left: 10%
+  top: 10%
+  width: 80%
+  height: 80%
+  border-radius: 10px
+
+
+////////////////////////////////////////////////////////////////////////
+.about-page-wrapper
+
+
+////////////////////////////////////////////////////////////////////////
+.faq
+  margin-top: 20px
+  margin-right: 20px
+  width: 250px
+  height: auto
+  float: left
+  border: 1px dashed purple
+  cursor: help
+  margin-bottom: 25px
+  h2
+    +mono
+    width: 100%
+    padding: 15px 
+    border-bottom: 1px solid purple
+    font-size: 16px
+    // text-transform: uppercase
+    // color: purple
+  h3
+    +regular
+    // color: purple
+    padding: 15px
+    font-size: 14px
+
+
+////////////////////////////////////////////////////////////////////////
+.contact
+  span
+    display: block
+    width: 100%
+    margin: 10px
+    h2
+      display: inline
+      +mono
+    h3
+      +regular
+      display: inline
+      color: purple
+    a
+      font-weight: 600
+      +regular
+      display: inline
+      color: purple
+
+
+////////////////////////////////////////////////////////////////////////
+.home-wrapper
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+
+  h5
+    display: inline-block
+    font-size: 5vw
+    +mono
+    font-size: 40px
+    color: red
+    animation: colorSwing 6s alternate infinite
+
+  .links 
+    +regular
+    font-style: italic
+    z-index: 5
+    padding-bottom: 20px
+    border-bottom: 1px solid grey
+    a
+      display: block
+      font-size: 14px
+      margin: 6px 0
+      font-weight: 600
+      letter-spacing: 0.2em
+      text-transform: uppercase
+      cursor: pointer
+      &:hover
+        animation: colorSwing 4s infinite
+
+  .home-copy
+    width: 50px
+    display: inline
+    margin: -10px
+    margin: 10px 0
+    +mono
+    font-size: 14px
+    line-height: 18px
+
+@keyframes colorSwing
+  0%
+    color: #435faa
+  20%
+    color: darkgreen
+  50%
+    color: orange
+  80%
+    color: #9a1bff
+  100
+    color: yellow
+
+.grid-container
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  z-index: -1
+
+.image-grid
+  // background-color: black
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 0
+  margin: 0
+  overflow: hidden
+  img
+    object-fit: cover
+    width: 1 / 4 * 100%
+  &:before
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background: rgba(100, 0, 100, 0.1)
+    z-index: 40
+
+
+
+////////////////////////////////////////////////////////////////////////
+.menu-button-wrapper
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  height: 50px
+
+.menu-dropdown
+  width: 10px
+  overflow: hidden
+  height: 10px
+  border: 1px solid gold
+  border-radius: 100%
+  margin: auto
+  margin-top: 10px
+  transition: transform 333ms ease, border-radius 333ms ease
+  &:hover
+    transform: rotate(90deg) scale(1.5)
+  &.dropdownOpen
+    border-radius: 0
+    height: auto
+    .menu-dropdown-content
+      .dropdownClosed &
+        pointer-events: none
+
+
+.window-container
+  position: absolute
+  display: inline-block
+  padding: 20px 40px
+  background-color: white
+  border: 2px solid black
+  z-index: 100
+  width: auto
+  height: auto
+  cursor: move
+  +regular
+  line-height: 30px
+  font-size: 16px
+  max-width: 80vw
+  overflow: scroll
+  &.wHeader
+    padding-top: 80px
+    .window-container-header
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 5
+      width: 100%
+      padding: 8px 40px
+      outline: none
+      font-size: 12px
+      border-bottom: 1px dashed black
+      height: 45px
+      .section-title
+        +mono
+        font-weight: 200
+        font-size: 13px
+        text-transform: uppercase
+        margin-right: 7px
+        display: inline
+        color: grey
+      .date
+        +regular
+        color: grey
+        font-weight: 100
+        font-size: 13px
+        display: inline
+        font-style: italic
+      input
+        transform: translate(28px, 4px)
+  
+  .date
+    +mono
+    color: grey
+    text-transform: uppercase
+    font-weight: 100
+    font-size: 13px
+    display: inline
+
+  p
+    margin-bottom: 30px
+
+  .header
+    +mono
+    letter-spacing: 0.05em
+    text-transform: uppercase
+    font-style: italic
+    margin: 10px 0
+    font-size: 18px
+    animation: colorSwing 10s reverse infinite
+ 
+.window-container-header
+  padding: 0
+  input
+    outline: none
+    border: none
+    float: right
+    font-weight: 600
+    color: black
+    // border: 1.5px dotted black
+    // border-radius: 10%
+    // border-bottom: 1.5px dotted black
+    height: 20px
+    width: 15px
+    background: none
+    transform: translate(28px, -12px)
+    font-size: 12px
+    cursor: pointer
