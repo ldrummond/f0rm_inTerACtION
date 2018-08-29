@@ -4,8 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "publish": "webpack && git add dist/* && git commit -m 'pushing to production' && git push",
-    "deploy": "gh-pages -d dist",
+    "publish": "webpack && git add ../CssTypeface/. && git commit -m 'pushing CssTypeface to production' && git push",
+    "pack": "webpack",
     "dev": "webpack-dev-server"
   },
   "repository": {

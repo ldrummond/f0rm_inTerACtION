@@ -108,16 +108,16 @@ export class App extends React.Component {
   constructor() {
     super()
 
-    let characterMarkup = []
-    for(const key in characterMarkup) {
-      const character = characterMarkup[key]
+    this.characterMarkup = []
+    for(const key in characterSet) {
+      const character = characterSet[key]
       const path = character.path
       let newCharacter = (
         <div className="character">
-        {character}
+        {key}
         </div>
       )
-      characterMarkup.push(newCharacter)
+      this.characterMarkup.push(newCharacter)
     }
   }  
 
@@ -125,7 +125,7 @@ export class App extends React.Component {
     return(
       <div className='site-wrapper'>
         <div className='site-inner'>
-          {characterMarkup}
+          {this.characterMarkup}
         </div>
       </div>
     )
