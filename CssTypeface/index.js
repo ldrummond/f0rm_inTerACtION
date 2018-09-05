@@ -3310,7 +3310,7 @@ const characterSet = [
     character: "8", 
     path : [
       {
-        type: "b1",
+        type: "b2",
         top: 1,
         left: 1,
       },
@@ -3320,27 +3320,27 @@ const characterSet = [
         left: 2
       },
       {
-        type: "b1",
+        type: "b2",
         top: 1,
         left: 3,
       },
        {
-        type: "b2",
+        type: "b1",
         top: 2,
         left: 1
       },
       {
-        type: "b1",
+        type: "b2",
         top: 2,
         left: 2,
       },
        {
-        type: "b2",
+        type: "b1",
         top: 2,
         left: 3
       },
       {
-        type: "b1",
+        type: "b2",
         top: 3,
         left: 1,
       },
@@ -3350,7 +3350,7 @@ const characterSet = [
         left: 2
       },
       {
-        type: "b1",
+        type: "b2",
         top: 3,
         left: 3
       },

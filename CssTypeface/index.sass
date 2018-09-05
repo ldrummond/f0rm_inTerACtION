@@ -39,16 +39,20 @@
   // filter: url('#goo') 
   text-align: center
   margin-bottom: 150px
+  display: flex
+  justify-content: center
+  align-items: center
    
 .charInner
-  position: absolute
-  left: 0%
-  top: 10%
+  // position: absolute
+  // left: 0%
+  // top: 10%
   background: transparent
   filter: url('#goo') 
   width: 100%
   height: 100%
-  will-change: transform
+  // transition: width 333ms ease, height 333ms ease
+  // animation: shrink 3s ease-in infinite alternate
   display: inline-grid
   grid-template-columns: auto auto auto
   grid-template-rows: auto auto auto
@@ -96,3 +100,13 @@
     transform: translateX(60px)
   to
     transform: translateX(-60px)
+
+@keyframes shrink
+  from
+    width: 100%
+    height: 100%
+    // transform: translate(0, 0)
+  to
+    width: 10%
+    height: 10%
+    // transform: translate(100%, 100%)

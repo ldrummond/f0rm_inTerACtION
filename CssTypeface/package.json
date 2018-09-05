@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "publish": "webpack && git add ../CssTypeface/. && git commit -m 'pushing CssTypeface to production' && git push",
+    "publish": "git pull && webpack && git add ../CssTypeface/. && git commit -m 'pushing CssTypeface to production' && git push",
     "pack": "webpack",
     "dev": "webpack-dev-server"
   },
