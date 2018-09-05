@@ -17,6 +17,69 @@
   flex-direction: column
 
 .character
-  width: 100px
-  height: 200px
-  font-size: 80px
+  width: 240px
+  height: 240px
+  font-size: 200px
+  color: lightgrey
+  position: relative
+  font-family: 'Monoton', sans-serif
+  // filter: url('#goo') 
+  text-align: center
+  margin-bottom: 150px
+   
+.charInner
+  position: absolute
+  left: 0%
+  top: 10%
+  background: transparent
+  filter: url('#goo') 
+  width: 100%
+  height: 100%
+  will-change: transform
+  display: inline-grid
+  grid-template-columns: auto auto auto
+  grid-template-rows: auto auto auto
+
+.shapeWrapper
+  // filter: url('#goo') 
+  position: relative
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+
+.b0
+  background: none
+
+.b1
+  position: absolute
+  width: 90px
+  height: 90px
+  border-radius: 100%
+  // border: 4px solid black
+  background: pink
+
+.b2
+  position: absolute
+  width: 60px
+  height: 60px
+  border-radius: 100%
+  // border: 4px solid black
+  background: pink 
+  // &:hover
+  // animation: slide 3s ease-out infinite alternate
+
+.b3
+  position: absolute
+  width: 30px
+  height: 30px
+  border-radius: 100%
+  // border: 4px solid black
+  background: pink
+
+@keyframes slide
+  from
+    transform: translateX(60px)
+  to
+    transform: translateX(-60px)
