@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.home-page-wrapper {
+    display: block;
+    padding: 100px;
+}
+
+a {
+    display: inline-block;
+    width: 80px;
+}
+
+.page-wrapper {
+    padding: 100px;
+    height: 250vh;
+}
+
+.page-inner {
+    height: 100%;
+    column-count: 2;
+    column-gap: 80px; 
+}
+
+.chunk {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid grey; 
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.chunk:first-of-type {
+    margin-bottom: 80px;
+}
+
+.chunk-header-1 {
+    font-size: 22px;
+    line-height: 0px;
+    margin-bottom: 0px;
+    color: grey;
+    font-weight: 100;
+    letter-spacing: 0.08em;
+}
+
+.chunk-header {
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 0px;
+    margin-bottom: 0px;
+    color: grey;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.chunk-copy-1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.chunk-copy {
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.chunk-image {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.chunk-link {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    display: inline;
+    width: 100%;
+    line-height: 0px;
+    margin-top: 26px;
+}
+
+.home-link {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+}
