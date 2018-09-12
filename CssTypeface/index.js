@@ -247,7 +247,7 @@ const characterSet = [
         left: 2
       },
       {
-        type: "b2",
+        type: "b3",
         top: 3,
         left: 3
       },
@@ -448,6 +448,56 @@ const characterSet = [
       },
       {
         type: "b0",
+        top: 3,
+        left: 3
+      },
+    ],
+  },
+  {
+    character: "J", 
+    path : [
+      {
+        type: "b0",
+        top: 1,
+        left: 1,
+      },
+       {
+        type: "b0",
+        top: 1,
+        left: 2
+      },
+      {
+        type: "b1",
+        top: 1,
+        left: 3,
+      },
+       {
+        type: "b0",
+        top: 2,
+        left: 1
+      },
+      {
+        type: "b0",
+        top: 2,
+        left: 2,
+      },
+       {
+        type: "b2",
+        top: 2,
+        left: 3
+      },
+      {
+        type: "b1",
+        top: 3,
+        left: 1,
+      },
+       {
+        type: "b2",
+        top: 3,
+        left: 2
+      },
+      {
+        type: "b1",
         top: 3,
         left: 3
       },
@@ -1758,11 +1808,6 @@ const characterSet = [
 export class App extends React.Component {
   constructor() {
     super()
-
-    this.state = {
-      showingText : false
-    }
-    this.onTextClick = this.onTextClick.bind(this)
   }  
   
   onTextClick() {
@@ -1808,10 +1853,9 @@ export class App extends React.Component {
       })
       return (
           <div className="character" key={elem.character}>
-          {this.state.showingText && elem.character}
-          <div className="charInner">
-          {charElems}
-          </div>
+            <div className="charInner">
+              {charElems}
+            </div>
           </div>
       )
     })
@@ -1819,8 +1863,6 @@ export class App extends React.Component {
     return(
       <div className='site-wrapper'>
         <div className='site-inner'>
-          <button className={`text-button ${this.state.showingText && "showingText"}`} 
-                  onClick={this.onTextClick}>{this.state.showingText ? "hide characters" : "show characters"}</button>
           {this.characterMarkup}
         </div>
       </div>
