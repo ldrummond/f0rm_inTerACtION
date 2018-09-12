@@ -7,3 +7,4 @@ http://lucasbuilds.site/f0rm_inTerACtION/ReferenceRepo
 http://lucasbuilds.site/f0rm_inTerACtION/CssTypeface
 
 3. Click Events Charrette 
+http://lucasbuilds.site/f0rm_inTerACtION/ClickEventsCharette/
