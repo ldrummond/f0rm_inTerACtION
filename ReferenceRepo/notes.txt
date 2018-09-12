@@ -1,0 +1,4 @@
+#SEMESTER NOTES: Form and Interaction
+
+Sep 10 -
+    Click events charrette. 
