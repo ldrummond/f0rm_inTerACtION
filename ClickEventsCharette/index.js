@@ -431,6 +431,7 @@ const ClickEvents = [
   (e, num) => { // 40
     let {$container, $allChars, $charWrap, $charInner, $dotWrappers, $dots} = getJqueryRefs(e);
     let curState = EventState[num]; 
+    $allChars.animate({height: "0px"}, 2000);
     updateEventState(num) 
 
   },
