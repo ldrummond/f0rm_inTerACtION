@@ -250,12 +250,13 @@ export class App extends React.Component {
     dots
       .get()
       .map(e => {
-          let r1 = (Math.random() - 0.5) * 800;
-          let r2 = (Math.random() - 0.5) * 800;
+          let r1 = (Math.random() - 0.5) * 1200;
+          let r2 = (Math.random() - 0.5) * 1200;
           $(e)
-            .css({left: `0px`, top: `0px`, opacity: '1'})
+            .css({opacity: '1'})
             .delay(300)
-            .css({left: `${r1}px`, top: `${r2}px`, opacity: '0'})
+            .animate({left: `${r1}px`, top: `${r2}px`})
+            .animate({opacity: '0'}, 666)
         })
     })
     
@@ -264,7 +265,7 @@ export class App extends React.Component {
     setTimeout(e => {
       $('.circles-container').css({zIndex: 1}), 1000
       $('.circles-container').animate({opacity: 1}, 3000)
-    }); 
+    }, 2000); 
 
     setTimeout(e => {
       $('.circles-container')
@@ -275,12 +276,15 @@ export class App extends React.Component {
             .children('.shapeWrapper')
             .children('span')
 
+          dots
+            .css({transition: 'top 666ms ease-out, left 666ms ease-out'})
+
           dots  
             .get()
             .map(e => {
                 let r3 = Math.random * 10
-                let r1 = (Math.random() - 0.5) * 30;
-                let r2 = (Math.random() - 0.5) * 30;
+                let r1 = (Math.random() - 0.5) * 90;
+                let r2 = (Math.random() - 0.5) * 90;
                 if(r3 % 5 == 0) {
                   r1 *= 10
                   r2 *= 10
@@ -301,24 +305,37 @@ export class App extends React.Component {
           dots  
             .get()
             .map(e => {
+                // $(e)
+                    // console.log('complete')
+                  // }})
                 $(e)
                   .animate({left: `0px`, top: `0px`})
-              })
-        }).mouseup(e => {
-          let dots = $(e.currentTarget)
-            .children('.charInner')
-            .children('.shapeWrapper')
-            .children('span')
+                  .delay(666)
+                  .queue(function (next) { 
+                    $(this).css({top: 'unset', left: 'unset'}); 
+                    next(); 
+                  })
 
-          dots  
-            .get()
-            .map(e => {
-              let r1 = (Math.random() - 0.5) * 20 * this.numClicks;
-              let r2 = (Math.random() - 0.5) * 20 * this.numClicks;
-              $(e)
-                .animate({left: `${r1}px`, top: `${r2}px`})
+                // setTimeout(e => {
+                //   $(e).css({top: 'unset', left: 'unset'}, 666)
+                // }, 666)
               })
         })
+        // .mouseup(e => {
+        //   let dots = $(e.currentTarget)
+        //     .children('.charInner')
+        //     .children('.shapeWrapper')
+        //     .children('span')
+
+        //   dots  
+        //     .get()
+        //     .map(e => {
+        //       let r1 = (Math.random() - 0.5) * 20 * this.numClicks;
+        //       let r2 = (Math.random() - 0.5) * 20 * this.numClicks;
+        //       $(e)
+        //         .animate({left: `${r1}px`, top: `${r2}px`})
+        //       })
+        // })
     }, 4000);
     this.numClicks++
   }
