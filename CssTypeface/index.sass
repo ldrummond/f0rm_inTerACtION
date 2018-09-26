@@ -4,32 +4,100 @@ html, body
   margin: 0
   padding: 0
   box-sizing: border-box
+  ::-webkit-scrollbar 
+      display: none
   
-$background: #3C79F0
-$dotsBack: #F6E132
-$dotsBorder: 0px solid black
+$background: white //#BDE3EE //white // #ECC656 // #F0DEA0 //#E2EED6 
+$dotsBack: black //purple //rgb(197, 84, 30) // blue #3C79F0 // yellow #F6E132
+$dotsBorder: none// 0px solid black
+
+$slow: 2400ms 
+$medium: 1600ms
+$fast: 1000ms
+$vfast: 600ms
+
+$opacityEnd: 0.2
+$easeStart: ease-in
+$easeEnd: ease-out
+
+$sick-nasty-ease: cubic-bezier(.72,.22,.35,.83)
+
+$endColor: black //rgba(100, 10, 10, 1)
+
+@mixin gradient
+  background: black// rgba(191, 25, 26, 0.8)
 
 body
   background: $background
 
 .site-wrapper
-  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
   background-color: $background
+  display: flex
+  justify-content: center
+  align-items: center
 
 .site-inner
-  width: 100%
-  height: 100%
+  position: fixed
+
+.site-inner
+.circles-container
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  margin: 5%
   text-align: center
+  &.goo
+    filter: url('#goo') 
+  .experience &
+    width: 1200px
+    height: 600px
+    margin: auto
+    position: relative
+    overflow: hidden
+    margin: 100px
+
+.circles-container
 
 .character
   width: 220px
   height: 220px
   position: relative
   transform: scale(0.5)
-  margin-bottom: 50px
+  margin: -30px
+  margin-bottom: 10px
   display: inline-flex
   overflow: visible 
-   
+  cursor: pointer
+  transition: transform 3s ease
+  .experience &
+    margin: 0
+    overflow: visible !important
+  
+
+.font-name
+  margin: 0 -45px
+  transform: scale(0.4)
+  display: inline-block
+  &.I
+    margin: 0 -70px
+  &.Space
+    width: 140px
+    height: 0
+
+.base-character
+  width: 220px
+  height: 220px
+  transform: scale(1)
+  margin: auto
+  margin-top: 20%
+
 .charInner
   background: transparent
   filter: url('#goo') 
@@ -38,7 +106,18 @@ body
   display: inline-grid
   grid-template-columns: auto auto auto
   grid-template-rows: auto auto auto
-  overflow: visible 
+  overflow: visible !important
+
+.circles-wrapper
+  position: absolute
+  display: block
+  width: 60px
+  height: 60px
+  border-radius: 60px
+  background: black
+  overflow: visible
+  cursor: pointer
+  transition: top $fast $sick-nasty-ease, left $fast $sick-nasty-ease
 
 .shapeWrapper
   position: relative
@@ -47,41 +126,54 @@ body
   align-items: center
   width: 100%
   height: 100%
-  overflow: visible 
-  &:hover
-    filter: blur(20px);
+  overflow: visible !important
+  span
+    @include gradient
+    border: $dotsBorder 
+    border-radius: 100%
+    overflow: visible
+    position: absolute
+    opacity: 1
 
 .b0
   width: 0
+  position: relative
   height: 100%
   background: none
+  &.fadeIn
+  &.fadeOut
+
 
 .b1
-  position: absolute
   width: 90px
   height: 90px
+  position: relative
   border-radius: 100%
-  background: $dotsBack
-  border: $dotsBorder
-  overflow: visible 
+  transition: opacity $slow ease, background $slow ease 
+  &.fadeOut
+    transition: opacity $slow $easeEnd, background $slow ease
+    opacity: $opacityEnd
+    background: $endColor
 
 .b2
-  position: absolute
   width: 50px
   height: 50px
-  border-radius: 100%
-  background: $dotsBack
-  border: $dotsBorder 
-  overflow: visible 
+  position: relative
+  transition: opacity $slow ease, background $slow ease 
+  &.fadeOut
+    transition: opacity $slow $easeEnd, background $slow ease
+    opacity: $opacityEnd
+    background: $endColor
 
 .b3
-  position: absolute
   width: 30px
   height: 30px
-  border-radius: 100%
-  background: $dotsBack
-  border: $dotsBorder
-  overflow: visible 
+  position: relative
+  transition: opacity $slow ease, background $slow ease 
+  &.fadeOut
+    transition: opacity $slow $easeEnd, background $slow ease
+    opacity: $opacityEnd
+    background: $endColor
 
 @keyframes slide
   from
@@ -96,3 +188,21 @@ body
   to
     width: 10%
     height: 10%
+
+@keyframes sink
+  from
+    filter: blur(0px)
+  to
+    filter: blur(10px)
+
+@keyframes swing
+  from
+    right: 0px
+  to
+    right: 200px
+
+@keyframes spin
+  from
+    transform: rotate(0deg) scale(0.5)
+  to 
+    transform: rotate(360deg) scale(0.5)
