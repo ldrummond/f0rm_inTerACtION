@@ -161,7 +161,7 @@ export class App extends React.Component {
         {this.renderGroups.map(e => e)}
         <span className="background" style={{
           backgroundSize: "cover",
-          backgroundImage:`url(../backgrounds/background${this.backgroundNum}.png)`,
+          backgroundImage:`url(./backgrounds/background${this.backgroundNum}.png)`,
           // backgroundImage: "url(../backgrounds/background.png)",
           backgroundRepeat: "none",
           backgroundColor: 'lightgrey',
