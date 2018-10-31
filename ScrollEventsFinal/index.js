@@ -156,6 +156,11 @@ export class App extends React.Component {
       "contentIndex": this.contentNum,
     };
 
+    let headerAttrs = {
+      "data-0" : "opacity : 1",
+      "data-1200" : "opacity : 0.5",
+    }
+
     let svgAttrs = {
       "data-0" : "opacity : 1",
       "data-800" : "opacity : 0",
@@ -165,7 +170,7 @@ export class App extends React.Component {
 
     return (
       <div className={`siteWrapper scroll${settings.experimentNumber}`}>
-        <span className="siteHeader">
+        <span className="siteHeader" {...headerAttrs}>
           <h2>Interface Interspace Intercourse</h2>
         </span>
         <span className={`siteInner`} style={{zIndex: 0}}>
