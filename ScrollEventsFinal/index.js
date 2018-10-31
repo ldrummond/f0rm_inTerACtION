@@ -158,7 +158,7 @@ export class App extends React.Component {
 
     let headerAttrs = {
       "data-0" : "opacity : 1",
-      "data-1200" : "opacity : 0.5",
+      "data-1200" : "opacity : 0.3",
     }
 
     let svgAttrs = {
