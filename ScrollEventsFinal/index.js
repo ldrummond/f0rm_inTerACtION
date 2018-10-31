@@ -168,8 +168,12 @@ export class App extends React.Component {
         <span className={`siteInner`} style={{zIndex: 0}}>
           {this.renderScrollGroup(settings)}
         </span>
-        <span className="siteCopy">
-          <svg viewBox="0 0 154.5 225" {...svgAttrs}>
+        <span className="siteCopy" {...svgAttrs}>
+          <h2>
+          Scroll to start.<br></br>
+          Refresh for fresh. 
+          </h2>
+          <svg viewBox="0 0 154.5 225">
             <g id="QLOSG5"><path d="M88,0c-.08,1.16-.14,183.22-.1,184.06l51.39-51.79,15.37,16c-6.16,6-75.6,75.52-76.66,76.76-.33,0-65.22-64.71-77.84-77.32l14.9-13.9c16.56,16.75,33.68,33.07,51.72,51.33C67,182.54,67.08,1,67,0Z" transform="translate(-0.16 0)"/></g>
           </svg>
         </span>
