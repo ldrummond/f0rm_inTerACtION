@@ -35,7 +35,7 @@ export class App extends React.Component {
   componentDidMount() {
     this.renderGroups = [];
     $(window).bind("scrollMounted", (event, skrollr) => {
-      console.log("scroll mounted")
+      // console.log("scroll mounted")
       setTimeout(e => {
         this.skrollr = skrollr        
         skrollr.setScrollTop(200, true); 
@@ -44,7 +44,7 @@ export class App extends React.Component {
     })
 
     $(window).bind("scrollEvent", (event, scrollData) => {
-      console.log(this.scrollGroups)
+      // console.log(this.scrollGroups)
       if(this.skrollr) {
         // if(this.scrollGroups > 3) {
         //   location.reload();
@@ -53,7 +53,6 @@ export class App extends React.Component {
           // Find the change in scroll
           this.scrollCur = scrollData.curTop 
           this.scrollDelta += Math.abs(scrollData.curTop - scrollData.lastTop)
-          console.log(this.scrollCur)
 
           if(this.scrollCur >= this.scrollMax) {
             location.reload();
@@ -134,7 +133,7 @@ export class App extends React.Component {
         // zIndex: "inherit",
       })
 
-      console.log(scrollRangeUpper)
+      // console.log(scrollRangeUpper)
 
       // Add the rect to the array of windows. 
       allWindows.push(
@@ -150,22 +149,31 @@ export class App extends React.Component {
 
   render() {
     let settings = {
-      "numRects" : 50,
+      "numRects" : 40,
       "affectedRects" : 300, 
       "speed" : 300, 
       "startPos" : [340, 200],
       "contentIndex": this.contentNum,
     };
 
+    let svgAttrs = {
+      "data-0" : "opacity : 1",
+      "data-600" : "opacity : 0",
+    }
+
     this.scrollMax = (settings.numRects + settings.affectedRects - 10) * settings.speed;
-    console.log(this.scrollMax)
 
     return (
       <div className={`siteWrapper scroll${settings.experimentNumber}`}>
         <span className={`siteInner`} style={{zIndex: 0}}>
           {this.renderScrollGroup(settings)}
         </span>
-        {this.renderGroups.map(e => e)}
+        <span className="siteCopy">
+          <svg viewBox="0 0 154.5 225" {...svgAttrs}>
+            <g id="QLOSG5"><path d="M88,0c-.08,1.16-.14,183.22-.1,184.06l51.39-51.79,15.37,16c-6.16,6-75.6,75.52-76.66,76.76-.33,0-65.22-64.71-77.84-77.32l14.9-13.9c16.56,16.75,33.68,33.07,51.72,51.33C67,182.54,67.08,1,67,0Z" transform="translate(-0.16 0)"/></g>
+          </svg>
+        </span>
+        {/* {this.renderGroups.map(e => e)} */}
       </div>
     )  
   }
