@@ -192,7 +192,7 @@ export class App extends React.Component {
 
   setupScrollEvents() {
     this.contentOptions = [
-      (<img src="./icons/missing_image.png" style={{width: 140}}></img>), 
+      (<img src="./icons/missing_image.png" style={{width: 140, marginBottom: -20}}></img>), 
       (<img src="./icons/radio.png" style={{width: 300, marginBottom: -50}}></img>), 
       (<img src="./icons/options.png" style={{width: 340, marginBottom: -350}}></img>), 
       (<img src="./icons/click.png" style={{width: 340, margin: 0, marginBottom: -50}}></img>), 
