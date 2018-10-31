@@ -1,0 +1,18 @@
+{
+  "name": "reference-repository",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "publish": "git pull && git add ../ReferenceRepo/. && git commit -m 'pushing ReferenceRepo to production' && git push"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ldrummond"
+  },
+  "homepage": "https://github.com/ldrummond",
+  "devDependencies": {
+
+  }
+}

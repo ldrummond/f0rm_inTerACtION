@@ -17,7 +17,7 @@ a {
 
 .page-wrapper {
     padding: 100px;
-    height: 250vh;
+    height: 300vh;
 }
 
 .page-inner {
@@ -55,6 +55,7 @@ a {
     color: grey;
     font-weight: 400;
     letter-spacing: 0.05em;
+    display: inline;
 }
 
 .chunk-copy-1 {
@@ -77,14 +78,18 @@ a {
     margin-bottom: 15px;
 }
 
+.small {
+    width: 32%;
+    margin-bottom: 30px;
+}
+
 .chunk-link {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     line-height: 22px;
     display: inline;
-    width: 100%;
     line-height: 0px;
-    margin-top: 26px;
+    margin: 0 20px
 }
 
 .home-link {
