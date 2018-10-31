@@ -165,6 +165,9 @@ export class App extends React.Component {
 
     return (
       <div className={`siteWrapper scroll${settings.experimentNumber}`}>
+        <span className="siteHeader">
+          <h2>Interface Interspace Intercourse</h2>
+        </span>
         <span className={`siteInner`} style={{zIndex: 0}}>
           {this.renderScrollGroup(settings)}
         </span>
