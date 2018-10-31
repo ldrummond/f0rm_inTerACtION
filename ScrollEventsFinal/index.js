@@ -27,6 +27,7 @@ export class App extends React.Component {
     this.renderGroups = [];
 
     this.skrollr = null; 
+    this.scrollMax = null;
 
     this.setupScrollEvents();
   }
@@ -45,17 +46,18 @@ export class App extends React.Component {
     $(window).bind("scrollEvent", (event, scrollData) => {
       console.log(this.scrollGroups)
       if(this.skrollr) {
-        if(this.scrollGroups > 3) {
-          location.reload();
-        }
+        // if(this.scrollGroups > 3) {
+        //   location.reload();
+        // }
         if(this.scrollCount > 1) {
           // Find the change in scroll
           this.scrollCur = scrollData.curTop 
           this.scrollDelta += Math.abs(scrollData.curTop - scrollData.lastTop)
+          console.log(this.scrollCur)
 
-          if(this.scrollDelta >= this.threshold) {
-            this.addScrollGroup()
-            this.threshold += 40000
+          if(this.scrollCur >= this.scrollMax) {
+            location.reload();
+            // this.threshold += 40000
           }
         } 
         this.scrollCount++
@@ -63,35 +65,35 @@ export class App extends React.Component {
     })
   }
 
-  addScrollGroup() {
-    // console.log("Add Scroll Group " + this.scrollGroups);
-    let settings = {
-      "numRects" : 40,
-      "affectedRects" : 300, 
-      "speed" : 500, 
-      "startPos" : [Math.random() * $('.siteInner').width(), (Math.random() * ($('.siteInner').height() / 2 - 60))],
-      "contentIndex" : this.contentNum
-    };
+  // addScrollGroup() {
+  //   // console.log("Add Scroll Group " + this.scrollGroups);
+  //   let settings = {
+  //     "numRects" : 40,
+  //     "affectedRects" : 300, 
+  //     "speed" : 500, 
+  //     "startPos" : [Math.random() * $('.siteInner').width(), (Math.random() * ($('.siteInner').height() / 2 - 60))],
+  //     "contentIndex" : this.contentNum
+  //   };
 
-    let group = this.renderScrollGroup(settings)
+  //   let group = this.renderScrollGroup(settings)
  
-    this.renderGroups.push(
-      <span className="siteInner" 
-        id={`group${this.scrollGroups}`} 
-        key={`group${this.scrollGroups}`} 
-        style={{zIndex: this.scrollGroups}}>
-         {group}
-      </span>)
+  //   this.renderGroups.push(
+  //     <span className="siteInner" 
+  //       id={`group${this.scrollGroups}`} 
+  //       key={`group${this.scrollGroups}`} 
+  //       style={{zIndex: this.scrollGroups}}>
+  //        {group}
+  //     </span>)
 
-    // Update React to show elements.
-    this.forceUpdate();
+  //   // Update React to show elements.
+  //   this.forceUpdate();
 
-    // Update Skrollr for those elements.
-    setTimeout(e => {
-      this.skrollr.refresh($(`#group${this.scrollGroups}`).children().children());
-      this.scrollGroups++ 
-    }, 200); 
-  }
+  //   // Update Skrollr for those elements.
+  //   setTimeout(e => {
+  //     this.skrollr.refresh($(`#group${this.scrollGroups}`).children().children());
+  //     this.scrollGroups++ 
+  //   }, 200); 
+  // }
 
   renderScrollGroup(settingsObj) {
     let allWindows = []; 
@@ -110,8 +112,8 @@ export class App extends React.Component {
       let rectContent = content
       
       // Start the scroll from the current position, so it seems static at first. 
-      let scrollRangeLower = i * speed + currentScrollPosition; 
-      let scrollRangeUpper = (i + affectedRects) * speed + currentScrollPosition; 
+      let scrollRangeLower = i * speed; 
+      let scrollRangeUpper = (i + affectedRects) * speed; 
 
       let skrollrAttrs = {}
       let scrollRangeIncrement = (scrollRangeUpper - scrollRangeLower) / (rectKeyframes.length - 1) 
@@ -126,11 +128,13 @@ export class App extends React.Component {
       })
 
       let style = ({
-        position: "absolute",
-        left: startPos[0],
-        top: startPos[1] + i * 80,
-        zIndex: "inherit",
+        // position: "absolute",
+        // left: startPos[0],
+        // top: startPos[1] + i * 80,
+        // zIndex: "inherit",
       })
+
+      console.log(scrollRangeUpper)
 
       // Add the rect to the array of windows. 
       allWindows.push(
@@ -148,10 +152,13 @@ export class App extends React.Component {
     let settings = {
       "numRects" : 50,
       "affectedRects" : 300, 
-      "speed" : 500, 
+      "speed" : 300, 
       "startPos" : [340, 200],
       "contentIndex": this.contentNum,
     };
+
+    this.scrollMax = (settings.numRects + settings.affectedRects - 10) * settings.speed;
+    console.log(this.scrollMax)
 
     return (
       <div className={`siteWrapper scroll${settings.experimentNumber}`}>
@@ -159,14 +166,6 @@ export class App extends React.Component {
           {this.renderScrollGroup(settings)}
         </span>
         {this.renderGroups.map(e => e)}
-        <span className="background" style={{
-          backgroundSize: "cover",
-          backgroundImage:`url(./backgrounds/background${this.backgroundNum}.png)`,
-          // backgroundImage: "url(../backgrounds/background.png)",
-          backgroundRepeat: "none",
-          backgroundColor: 'lightgrey',
-          zIndex: -1,
-        }}></span>
       </div>
     )  
   }
@@ -174,10 +173,11 @@ export class App extends React.Component {
   setupScrollEvents() {
     this.contentOptions = [
       (<img src="./icons/missing_image.png" style={{width: 140}}></img>), 
-      (<img src="./icons/radio.png" style={{width: 300}}></img>), 
-      (<img src="./icons/options.png" style={{width: 400}}></img>), 
-      (<input type="checkbox" style={{zoom: 5}}></input>),
-      (<input type="text" style={{fontSize: 50, border: "1px solid grey", padding: 10, boxShadow: "10px 10px 10px rgba(0,0, 0, 0.2)"}} placeholder="input text"></input>),
+      (<img src="./icons/radio.png" style={{width: 300, marginBottom: -50}}></img>), 
+      (<img src="./icons/options.png" style={{width: 340, marginBottom: -350}}></img>), 
+      (<img src="./icons/click.png" style={{width: 340, margin: 0, marginBottom: -50}}></img>), 
+      (<input type="checkbox" style={{zoom: 5, marginTop: -20}}></input>),
+      (<input type="text" style={{marginTop: 20, fontSize: 50, border: "1px solid grey", padding: 10, boxShadow: "10px 10px 10px rgba(0,0, 0, 0.2)"}} placeholder="input text"></input>),
     ]
 
     this.ScrollAnimation = {

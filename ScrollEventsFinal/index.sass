@@ -3,11 +3,18 @@ html, body
   padding: 0
   box-sizing: border-box
 
+#app
+
 .siteWrapper
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
   width: 100vw
   height: 100vh
-  position: fixed
   display: none
+  position: absolute
+  background: rgba(100, 100, 80, 0.1)
 
 .siteInner
   position: absolute
@@ -15,19 +22,14 @@ html, body
   left: 0
   width: 100%
   height: 100%
-  display: block
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-direction: column
+  padding-top: 200px
 
 .scrollWindowWrapper
   box-sizing: border-box
-  position: absolute
     
 .scrollWindowInner
   display: block
-
-.background
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  z-index: -1
