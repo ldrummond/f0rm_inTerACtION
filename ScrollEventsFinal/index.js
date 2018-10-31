@@ -158,7 +158,7 @@ export class App extends React.Component {
 
     let svgAttrs = {
       "data-0" : "opacity : 1",
-      "data-600" : "opacity : 0",
+      "data-800" : "opacity : 0",
     }
 
     this.scrollMax = (settings.numRects + settings.affectedRects - 10) * settings.speed;
@@ -170,7 +170,7 @@ export class App extends React.Component {
         </span>
         <span className="siteCopy" {...svgAttrs}>
           <h2>
-          Scroll to start.<br></br>
+          Scroll to experience.<br></br>
           Refresh for fresh. 
           </h2>
           <svg viewBox="0 0 154.5 225">
