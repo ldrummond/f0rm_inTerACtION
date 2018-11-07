@@ -42,17 +42,36 @@ let yDomain = [0, 1000];
 
 export const resizeData = [
 {
-    "content": (
-        <div 
-            style={{background: "orange", width: "100%", height: "30%", mixBlendMode: "hard-light", position: "fixed", left: "50%"}}>
-        </div>),
+    "content": (<React.Fragment>
+        <video id="testVid" width="320" height="240" autoPlay loop><source src="./assets/cradle1.mp4" type="video/mp4"></source></video><h2>Sound on!</h2>
+        </React.Fragment>),
     "placeholder": "",
     "style": {
-        "background":"url(./assets/texture.png)"
+        "background":"none"
     },
     "resizeFn": (width, height) => {
+        let timeScale = scale([400, 1400], [0.1, 2])
+        let testVid = $("#testVid")
+        console.log(testVid)
+
+        if(testVid.length > 0) {
+            if(testVid[0].loop == true) {
+                testVid[0].loop = false; 
+
+                testVid.bind("ended", function() {
+                    console.log("ended")
+                    this.currentTime = 0;
+                    this.play();
+                    this.playbackRate = timeScale($(window).width())
+                })
+            } 
+            testVid[0].playbackRate = timeScale(width);
+        }
         return (
-            {"width" : `${height / 4}px`}
+            {
+                "width": "300px",
+                "height": "200px",
+            }
         )
     }
 }, // 0.
@@ -162,7 +181,9 @@ export const resizeData = [
     }
 }, // 6.
 {
-    "content": (<video id="testVid" width="320" height="240" autoPlay loop><source src="./assets/cradle1.mp4" type="video/mp4"></source></video>),
+    "content": (<React.Fragment>
+        <video id="testVid" width="320" height="240" autoPlay loop><source src="./assets/cradle1.mp4" type="video/mp4"></source></video><h2>Sound on!</h2>
+        </React.Fragment>),
     "placeholder": "",
     "style": {
         "background":"none"
@@ -170,7 +191,7 @@ export const resizeData = [
     "resizeFn": (width, height) => {
         let timeScale = scale([400, 1400], [0.1, 2])
         let testVid = $("#testVid")
-        console.log(testVid)
+        // console.log(testVid)
 
         if(testVid.length > 0) {
             if(testVid[0].loop == true) {
