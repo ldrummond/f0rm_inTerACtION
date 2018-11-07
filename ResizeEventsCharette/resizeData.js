@@ -41,40 +41,40 @@ let xDomain = [0, 1400];
 let yDomain = [0, 1000]; 
 
 export const resizeData = [
-{
-    "content": (<React.Fragment>
-        <video id="testVid" width="320" height="240" autoPlay loop><source src="./assets/cradle1.mp4" type="video/mp4"></source></video><h2>Sound on!</h2>
-        </React.Fragment>),
-    "placeholder": "",
-    "style": {
-        "background":"none"
-    },
-    "resizeFn": (width, height) => {
-        let timeScale = scale([400, 1400], [0.1, 2])
-        let testVid = $("#testVid")
-        console.log(testVid)
+// {
+//     "content": (<React.Fragment>
+//         <video id="testVid" width="320" height="240" autoPlay loop><source src="./assets/cradle1.mp4" type="video/mp4"></source></video><h2>Sound on!</h2>
+//         </React.Fragment>),
+//     "placeholder": "",
+//     "style": {
+//         "background":"none"
+//     },
+//     "resizeFn": (width, height) => {
+//         let timeScale = scale([400, 1400], [0.1, 2])
+//         let testVid = $("#testVid")
+//         console.log(testVid)
 
-        if(testVid.length > 0) {
-            if(testVid[0].loop == true) {
-                testVid[0].loop = false; 
+//         if(testVid.length > 0) {
+//             if(testVid[0].loop == true) {
+//                 testVid[0].loop = false; 
 
-                testVid.bind("ended", function() {
-                    console.log("ended")
-                    this.currentTime = 0;
-                    this.play();
-                    this.playbackRate = timeScale($(window).width())
-                })
-            } 
-            testVid[0].playbackRate = timeScale(width);
-        }
-        return (
-            {
-                "width": "300px",
-                "height": "200px",
-            }
-        )
-    }
-}, // 0.
+//                 testVid.bind("ended", function() {
+//                     console.log("ended")
+//                     this.currentTime = 0;
+//                     this.play();
+//                     this.playbackRate = timeScale($(window).width())
+//                 })
+//             } 
+//             testVid[0].playbackRate = timeScale(width);
+//         }
+//         return (
+//             {
+//                 "width": "300px",
+//                 "height": "200px",
+//             }
+//         )
+//     }
+// }, // 0.
 {
     "content": "",
     "placeholder": "",
@@ -191,7 +191,7 @@ export const resizeData = [
     "resizeFn": (width, height) => {
         let timeScale = scale([400, 1400], [0.1, 2])
         let testVid = $("#testVid")
-        // console.log(testVid)
+        console.log(testVid)
 
         if(testVid.length > 0) {
             if(testVid[0].loop == true) {

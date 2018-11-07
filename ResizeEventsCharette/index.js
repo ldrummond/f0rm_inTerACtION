@@ -9,7 +9,7 @@ export class App extends React.Component {
     super()
 
     this.state = {
-      selectedIndex : 0,
+      selectedIndex : 6,
       width: undefined,
       height: undefined, 
     }
@@ -46,11 +46,11 @@ export class App extends React.Component {
   }
 
   handleClick() {
-    // if(this.state.selectedIndex == this.numOptions) {
-    //   this.setState({selectedIndex: 0})
-    // } else {
-    //   this.setState((prevState, props) => { return {"selectedIndex": parseInt(prevState.selectedIndex) + 1}})
-    // }
+    if(this.state.selectedIndex == this.numOptions) {
+      this.setState({selectedIndex: 0})
+    } else {
+      this.setState((prevState, props) => { return {"selectedIndex": parseInt(prevState.selectedIndex) + 1}})
+    }
   }
 
   render() {
@@ -70,11 +70,11 @@ export class App extends React.Component {
       <div className="container" onClick={this.handleClick}>
         <span className="legend">
           test number
-          {/* <select className="select" value={this.state.selectedIndex} onChange={this.handleChange}>
+          <select className="select" value={this.state.selectedIndex} onChange={this.handleChange}>
             {new Array(8).fill(undefined).map((e,i) => {
               return (<option value={i} key={i}>{i}</option>)
             })}
-          </select> */}
+          </select>
           <span className="resolution"></span>
         </span>
        
