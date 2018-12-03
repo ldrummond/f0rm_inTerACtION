@@ -1,0 +1,132 @@
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: #ecceb8;
+    /* background: url("background.jpg");
+    background-size: cover;
+    background-position: center; */
+    cursor: crosshair;
+}
+
+#playToggle {
+    position: absolute;
+    top: 60px;
+    right: 70px;
+    /* color: rgb(146, 146, 146);  */
+    color : #1139e9;
+    font-size: 12px; 
+    z-index: 20;
+    background: none; 
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#matterContainer {
+    position: absolute;
+    overflow: hidden;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    box-sizing: border-box;
+    border: transparent;
+    background: transparent;
+    /* top: 1%;
+    left: 1%;
+    width: 98%;
+    height: 98%; */
+    z-index: 5;
+    /* filter: url("#neonGlow") */
+    border: 0;
+    cursor: crosshair;
+}
+
+#border {
+    /* display: none;  */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+    cursor: crosshair;
+    overflow: hidden;
+}
+
+#collider {
+    position: absolute;
+    display: block;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(17,57,233,1) 0%, rgba(17,57,233,0.15) 37%, rgba(17,57,233,0) 72%, rgba(17,57,233,0) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(17,57,233,1) 0%,rgba(17,57,233,0.15) 37%,rgba(17,57,233,0) 72%,rgba(17,57,233,0) 100%);
+    background: radial-gradient(ellipse at center, rgba(17,57,233,1) 0%,rgba(17,57,233,0.15) 37%,rgba(17,57,233,0) 72%,rgba(17,57,233,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1139e9', endColorstr='#001139e9',GradientType=1 );
+}
+
+#collider.visible {
+    opacity: 1;
+    transform: scale(1)
+}
+
+#icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.iconsVert {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+#icon1, #icon2, #icon3, #icon4 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    stroke: #1139e9;
+    fill: transparent; 
+    stroke-width: 0.7; 
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+#icon1 {
+    top: 0;
+    left: 45%;
+} 
+
+#icon2 {
+    top: 42%;
+    left: 0;
+    transform: rotate(90deg)
+} 
+
+#icon3 {
+    top: 85%;
+    left: 45%;
+} 
+
+#icon4 {
+    top: 42%;
+    left: 90%;
+    transform: rotate(90deg)
+}

@@ -1,0 +1,48 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.container {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-end; */
+}
+
+#playAudio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+}
+/* 
+@keyframes color {
+    from {background-color: teal;}
+    to {background-color: lightskyblue;}
+} */
+
+.soundBlock {
+    /* background: skyblue; */
+    width: 100px;
+    height: 100px;
+    border: 1px solid grey;
+    /* animation: color 4s ease 0s infinite alternate; */
+}
+
+#resizable { width: 150px; height: 150px; padding: 0.5em;
+    text-align: center; margin: 0; }
+
+.ui-widget-header {
+    background:#b9cd6d;
+    border: 1px solid #b9cd6d;
+    color: #FFFFFF;
+    font-weight: bold;
+ }
+
+ .ui-widget-content {
+    background: #cedc98;
+    border: 1px solid #DDDDDD;
+    color: #333333;
+ }

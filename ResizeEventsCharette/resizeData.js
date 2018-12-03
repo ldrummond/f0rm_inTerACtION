@@ -202,6 +202,7 @@ export const resizeData = [
                     this.currentTime = 0;
                     this.play();
                     this.playbackRate = timeScale($(window).width())
+                    
                 })
             } 
             testVid[0].playbackRate = timeScale(width);

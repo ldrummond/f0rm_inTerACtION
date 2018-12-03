@@ -438,24 +438,31 @@ const ClickEvents = [
   (e, num) => { // 41
     let {$container, $allChars, $charWrap, $charInner, $dotWrappers, $dots} = getJqueryRefs(e);
     let curState = EventState[num]; 
+    $charWrap.css({filter: "blur(30px)"});
+    // $dots.css({filter: "blur(30px)"});
     updateEventState(num) 
 
   },
   (e, num) => { // 42
     let {$container, $allChars, $charWrap, $charInner, $dotWrappers, $dots} = getJqueryRefs(e);
     let curState = EventState[num]; 
+    $dotWrappers.css({filter: "blur(30px)"});
     updateEventState(num) 
 
   },
   (e, num) => { // 43
     let {$container, $allChars, $charWrap, $charInner, $dotWrappers, $dots} = getJqueryRefs(e);
-    let curState = EventState[num]; 
+    let curState = EventState[num];
+    $dotWrappers.children('.b2').css({filter: "blur(20px)"});
+    $dotWrappers.children('.b1').css({filter: "blur(40px)"});
     updateEventState(num) 
 
   },
   (e, num) => { // 44
     let {$container, $allChars, $charWrap, $charInner, $dotWrappers, $dots} = getJqueryRefs(e);
-    let curState = EventState[num]; 
+    let curState = EventState[num];
+    $dotWrappers.children('.b2').css({filter: "blur(30px)"});
+    $dotWrappers.children('.b1').css({filter: "blur(40px)"}); 
     updateEventState(num) 
 
   },

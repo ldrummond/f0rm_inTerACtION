@@ -46,11 +46,13 @@ export class App extends React.Component {
   }
 
   handleClick() {
-    if(this.state.selectedIndex == this.numOptions) {
-      this.setState({selectedIndex: 0})
-    } else {
-      this.setState((prevState, props) => { return {"selectedIndex": parseInt(prevState.selectedIndex) + 1}})
-    }
+    this.forceUpdate();
+
+    // if(this.state.selectedIndex == this.numOptions) {
+    //   this.setState({selectedIndex: 0})
+    // } else {
+    //   this.setState((prevState, props) => { return {"selectedIndex": parseInt(prevState.selectedIndex) + 1}})
+    // }
   }
 
   render() {
