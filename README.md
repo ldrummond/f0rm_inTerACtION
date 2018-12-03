@@ -17,3 +17,6 @@ http://lucasbuilds.site/f0rm_inTerACtION/ScrollEventsFinal/
 
 6. Resize Events Charrette 
 http://lucasbuilds.site/f0rm_inTerACtION/ScrollEventsFinal/
+
+7. Resize Events Final 
+http://lucasbuilds.site/f0rm_inTerACtION/ResizeSoundBounce/
