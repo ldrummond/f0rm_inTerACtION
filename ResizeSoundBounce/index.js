@@ -1,9 +1,11 @@
 
 
-let bongo = new Audio('bongo.wav');
+let bongo = new Audio('tuba.mp3');
 let trombone = new Audio('trombone.mp3');
-let cello = new Audio('cello.mp3');
-let washboard = new Audio('washboard.mp3');
+let cello = new Audio('basoon.mp3');
+let washboard = new Audio('bass.mp3');
+
+let sounds = [bongo, trombone, cello, washboard]
 
 window.shouldPlayAudio = false;
 window.resizeTimeout;
@@ -26,7 +28,10 @@ class Wall {
             restitution: 1,
             label: "wall",
             isStatic: true, 
-            // render: {visible: false}
+            render: {
+                visible: true,
+                strokeStyle: circStroke,
+            }
         })
 
         this.width = width;
@@ -152,16 +157,16 @@ $(function() {
     const midHeight = height / 2; 
     
     const top =
-        new Wall(midWidth, -halfThick, width * 10, wallThickness, MatterComps, {sound: washboard})
+        new Wall(midWidth, -halfThick, width * 10, wallThickness, MatterComps, {soundId: 0})
 
     const bottom =  
-        new Wall(midWidth, height + halfThick, width * 10, wallThickness, MatterComps, {sound: cello})
+        new Wall(midWidth, height + halfThick, width * 10, wallThickness, MatterComps, {soundId: 1})
 
     const left =    
-        new Wall(-halfThick, midHeight, wallThickness, height * 10, MatterComps, {sound: bongo})
+        new Wall(-halfThick, midHeight, wallThickness, height * 10, MatterComps, {soundId: 2})
         
     const right =   
-        new Wall(width + halfThick,  midHeight, wallThickness, height * 10,   MatterComps, {sound: trombone})
+        new Wall(width + halfThick,  midHeight, wallThickness, height * 10,   MatterComps, {soundId: 3})
 
     const wallComposite = Matter.Composite.create();
     Matter.Composite.add(wallComposite, [top.body, left.body, bottom.body, right.body]) 
@@ -170,9 +175,6 @@ $(function() {
     /////////////////////////
     /// Add Bouncing Circles
 
-    const circle = new Circle(100, 100, 80, MatterComps);
-    const circle2 = new Circle(100, 20, 80, MatterComps); 
-    
     let movingCirclesComposite = Matter.Composite.create(); 
     // Matter.Composite.add(movingCirclesComposite, [circle.body, circle2.body])
     World.add(engine.world, movingCirclesComposite)
@@ -244,6 +246,10 @@ $(function() {
         }
     })
 
+    $("#clearToggle").click(function() {
+        Matter.Composite.clear(movingCirclesComposite)
+    })
+
     let circleRenderHover = {
         fillStyle: circFillHover,
         strokeStyle: circStrokeHover,
@@ -273,14 +279,18 @@ $(function() {
 
             if(prefabCircles.length > 0) {
                 prefabCirclesComposite.bodies.map(c => Object.assign(c.render, circleRenderBase));
-                Object.assign(prefabCircles[prefabCircles.length - 1].render, prefabRenderHover)
+                Object.assign(prefabCircles[prefabCircles.length - 1].render, prefabRenderHover);
             } else {
                 prefabCirclesComposite.bodies.map(c => Object.assign(c.render, circleRenderBase));
             }
         }
-        movingCirclesComposite.bodies.map(c => {
-
-        });
+        if(movingCirclesComposite.bodies.length > 0) {
+            if(!$('#clearToggle').hasClass("starting")) {
+                $('#clearToggle').fadeIn();
+            }
+        } else {
+            $('#clearToggle').fadeOut();
+        }
     }, 80)
 
     $(window).click(e => {
@@ -292,12 +302,32 @@ $(function() {
             Matter.Composite.remove(movingCirclesComposite, movingCircles[0])
         } 
         if(prefabCircles.length > 0) {
-            let prefab = prefabCircles[prefabCircles.length - 1]
-            let r = 5 + (5 - parseInt(prefab.label)) * 15
+            if($('body').hasClass("starting")) {
+                $('body').removeClass("starting");
+                $('#projectTitle').slideToggle("slow");
+                $('.tutorial').slideToggle("slow", _ => {
+                    setTimeout(_ => {
+                        $('#clearToggle').slideToggle(666);
+                        $('#clearToggle').removeClass("starting");
 
-            let newCircle = new Circle(prefab.position.x, prefab.position.y, r, MatterComps)
-            // let newCircle = new Circle(100, 100, 80, MatterComps);
-            Matter.Composite.add(movingCirclesComposite, newCircle.body)
+                        setTimeout(_ => {
+                        let prefab = prefabCircles[prefabCircles.length - 1]
+                        let r = 5 + (5 - parseInt(prefab.label)) * 15
+            
+                        let newCircle = new Circle(prefab.position.x, prefab.position.y, r, MatterComps)
+                        // let newCircle = new Circle(100, 100, 80, MatterComps);
+                        Matter.Composite.add(movingCirclesComposite, newCircle.body)
+                        }, 666)
+                    }, 333)
+                }); 
+            } else {
+                let prefab = prefabCircles[prefabCircles.length - 1]
+                let r = 5 + (5 - parseInt(prefab.label)) * 15
+    
+                let newCircle = new Circle(prefab.position.x, prefab.position.y, r, MatterComps)
+                // let newCircle = new Circle(100, 100, 80, MatterComps);
+                Matter.Composite.add(movingCirclesComposite, newCircle.body)
+            }
         } 
     })
 
@@ -314,53 +344,111 @@ $(function() {
         right.updatePos(width + wallThickness / 2, height / 2)
     }
 
-    let areaScale = linearScale([1000, 20000],[0.2, 1])
+    function addSound(soundId, volume, speed) {
+        let sound = sounds[soundId].cloneNode();
+
+        sound.volume = volume;
+        sound.playbackRate = speed; 
+        sound.play();
+
+        sound.onended = function() {
+            $(this).remove();
+        }
+    }
+
+    function addText(r, w) {
+        let ran = Math.random * 30; 
+        let color = `rgba(${138 + ran}, ${25 - (ran / 2)}, ${5}, ${0.945})`;
+        console.log((w.id + 1) * r * 3 + 10)
+
+        let $text = $("<span>")
+            .text(String.fromCharCode(Math.round((w.id + 1) * r * 3 + 11)))
+            .addClass("textNode")
+            .css({
+                fontSize: r * 3.5,
+                color: color,
+                // transform: `translate(${-width / 2}px, ${-width / 2}px)`
+            });
+
+        
+
+        let $textContainer = $('#centerText');
+        $textContainer.append($text);
+        $text.delay(1000).animate({
+            fontSize: 0,
+        }, 666, function() {
+            $(this).remove();
+        })
+    }
+
+    function addCol(x, y, r) {
+        let width = r * 5; 
+        let $col = $("<div>")
+            .addClass("collider")
+            .css({
+                width: width,
+                height: width,
+                top: y,
+                left: x, 
+                transform: `translate(${-width / 2}px, ${-width / 2}px)`
+            });
+
+        let spread = 100; 
+        let $border = $('#border');
+        $border.append($col);
+        $col.animate({
+            opacity: 0,
+            height: `+=${spread}`,
+            width: `+=${spread}`,
+            top: `-=${spread/2}`,
+            left: `-=${spread/2}`,
+        }, 888, function() {
+            $(this).remove();
+        })
+    }
+
+    let areaScale = linearScale([1000, 20000],[0.4, 0.8])
     let playbackScale = linearScale([1236, 19911],[3, 0.3])
-    let $col = $('#collider'); 
 
     function onCollision(event) {
         event.pairs.map(e => {
-            console.log(e)
             let bodyA = e.bodyA;
             let bodyB = e.bodyB;
             let volume = 0;
             let playbackRate = 1; 
+            let r = 1; 
+            let pos = {x: 0, y: 0}; 
+            let soundId = 0; 
 
             if(bodyA.label !== "wall") {
                 volume = areaScale(bodyA.area)
                 playbackRate = playbackScale(bodyA.area)
-                let pos = bodyA.position;
-                $col.css({
-                    top: pos.y,
-                    left: pos.x,
-                })
+                r = Math.sqrt(bodyB.area) / Math.PI;
+                pos = bodyB.position;
+
+                addCol(pos.x, pos.y, r)
             }
             if(bodyB.label !== "wall") {
                 volume = areaScale(bodyB.area)
                 playbackRate = playbackScale(bodyB.area)
-                console.log(bodyB.area)
 
-                let pos = bodyB.position;
-                $col.css({
-                    top: pos.y,
-                    left: pos.x,
-                })
+                r = Math.sqrt(bodyB.area) / Math.PI;
+                pos = bodyB.position;
+
+                addCol(pos.x, pos.y, r)
+                addText(r, bodyA)
             }
 
             if(bodyA.label === "wall") {
                 if(window.shouldPlayAudio) {
-                    bodyA.sound.currentTime = 0; 
-                    bodyA.sound.volume = volume; 
-                    bodyA.sound.playbackRate = playbackRate; 
-                    bodyA.sound.play();
+                    soundId = bodyA.soundId; 
+                    addSound(soundId, volume, playbackRate)
                 }
             }
             if(bodyB.label === "wall") {
                 if(window.shouldPlayAudio) {
-                    bodyB.sound.currentTime = 0;
-                    bodyA.sound.volume = volume;
-                    bodyA.sound.playbackRate = playbackRate; 
-                    bodyB.sound.play();
+                    soundId = bodyB.soundId; 
+                    addSound(soundId, volume, playbackRate)
                 }
             }
         })

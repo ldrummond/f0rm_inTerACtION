@@ -3,27 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Newtons Symphony</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    <!-- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900" rel="stylesheet">
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="./js/matter.min.js" type="text/javascript"></script>
     <script src="index.js"></script>
 </head>
-<body>
+<body class="starting">
     <!-- <svg>
         <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
         </filter>
     </svg> -->
-    <button id="playToggle">Play Audio</button>
+    <div id="centerText">
+
+    </div>
+    <div id="buttons">
+        <button id="playToggle">Play Audio</button><br>
+        <button id="clearToggle" class="starting">Clear</button>
+    </div>
     <audio id="audioBase"><source src="bongo.wav" type="audio/wav"></audio>
     <div id="matterContainer"></div>
-    <div id="border">
-        <div id="collider"></div>
+    <div id="border"></div>
+    <div id="projectTitle">
+        Newtons Symphony
     </div>
+    <div class="tutorial">
+        <span class="line"></span>
+        <h3 class="startText">click to start</h3>
+    </div>
+    
     <!-- <div id="icons">
         <span class="iconsVert">
             <svg id="icon4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.13 11.52"><defs></defs><title>icon4</title><circle class="cls-1" cx="18.94" cy="7.09" r="3.93"/><circle class="cls-1" cx="27.51" cy="2.13" r="1.63"/><circle class="cls-1" cx="8.54" cy="3.97" r="2.44"/><circle class="cls-1" cx="1.32" cy="4.38" r="0.82"/><circle class="cls-1" cx="35.25" cy="6.01" r="1.37"/></svg>
