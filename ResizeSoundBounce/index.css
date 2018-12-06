@@ -96,7 +96,7 @@ body {
 .collider {
     position: absolute;
     display: block;
-    background: rgba(196, 50, 13, 0.9);
+    background: rgba(160, 37, 6, 0.9);
     /* z-index: 5; */
     /* background: -moz-radial-gradient(center, ellipse cover, rgba(17,57,233,1) 0%, rgba(17,57,233,0.69) 88%, rgba(17,57,233,0) 100%);
     background: -webkit-radial-gradient(center, ellipse cover, rgba(17,57,233,1) 0%,rgba(17,57,233,0.69) 88%,rgba(17,57,233,0) 100%);

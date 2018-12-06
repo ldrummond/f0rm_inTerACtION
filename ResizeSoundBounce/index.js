@@ -359,13 +359,13 @@ $(function() {
     function addText(r, w) {
         let ran = Math.random * 30; 
         let color = `rgba(${138 + ran}, ${25 - (ran / 2)}, ${5}, ${0.945})`;
-        console.log((w.id + 1) * r * 3 + 10)
+        console.log((w.id + 1) * r * 2 + 50)
 
         let $text = $("<span>")
             .text(String.fromCharCode(Math.round((w.id + 1) * r * 3 + 11)))
             .addClass("textNode")
             .css({
-                fontSize: r * 3.5,
+                fontSize: r * 3,
                 color: color,
                 // transform: `translate(${-width / 2}px, ${-width / 2}px)`
             });
