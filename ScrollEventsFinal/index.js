@@ -64,36 +64,6 @@ export class App extends React.Component {
     })
   }
 
-  // addScrollGroup() {
-  //   // console.log("Add Scroll Group " + this.scrollGroups);
-  //   let settings = {
-  //     "numRects" : 40,
-  //     "affectedRects" : 300, 
-  //     "speed" : 500, 
-  //     "startPos" : [Math.random() * $('.siteInner').width(), (Math.random() * ($('.siteInner').height() / 2 - 60))],
-  //     "contentIndex" : this.contentNum
-  //   };
-
-  //   let group = this.renderScrollGroup(settings)
- 
-  //   this.renderGroups.push(
-  //     <span className="siteInner" 
-  //       id={`group${this.scrollGroups}`} 
-  //       key={`group${this.scrollGroups}`} 
-  //       style={{zIndex: this.scrollGroups}}>
-  //        {group}
-  //     </span>)
-
-  //   // Update React to show elements.
-  //   this.forceUpdate();
-
-  //   // Update Skrollr for those elements.
-  //   setTimeout(e => {
-  //     this.skrollr.refresh($(`#group${this.scrollGroups}`).children().children());
-  //     this.scrollGroups++ 
-  //   }, 200); 
-  // }
-
   renderScrollGroup(settingsObj) {
     let allWindows = []; 
     let currentScrollPosition = this.scrollCur + 100 
@@ -157,8 +127,13 @@ export class App extends React.Component {
     };
 
     let headerAttrs = {
-      "data-0" : "opacity : 1",
-      "data-1200" : "opacity : 0.3",
+      "data-0" : "opacity : 1;",
+      "data-1200" : "opacity : 0.3;",
+    }
+
+    let headerSpanAttrs = {
+      "data-0" : "width: 380px; font-size: 64px",
+      "data-1200" : "width : 840px; font-size: 50px",
     }
 
     let svgAttrs = {
@@ -169,23 +144,23 @@ export class App extends React.Component {
     this.scrollMax = (settings.numRects + settings.affectedRects - 10) * settings.speed;
 
     return (
-      <div className={`siteWrapper scroll${settings.experimentNumber}`}>
-        <span className="siteHeader" {...headerAttrs}>
-          <h2>Interface Interspace Intercourse</h2>
-        </span>
-        <span className={`siteInner`} style={{zIndex: 0}}>
-          {this.renderScrollGroup(settings)}
-        </span>
-        <span className="siteCopy" {...svgAttrs}>
-          <h2>
-          Scroll to experience.<br></br>
-          Refresh for fresh. 
-          </h2>
-          <svg viewBox="0 0 154.5 225">
-            <g id="QLOSG5"><path d="M88,0c-.08,1.16-.14,183.22-.1,184.06l51.39-51.79,15.37,16c-6.16,6-75.6,75.52-76.66,76.76-.33,0-65.22-64.71-77.84-77.32l14.9-13.9c16.56,16.75,33.68,33.07,51.72,51.33C67,182.54,67.08,1,67,0Z" transform="translate(-0.16 0)"/></g>
-          </svg>
-        </span>
-        {/* {this.renderGroups.map(e => e)} */}
+      <div>
+        <div className={`siteWrapper scroll${settings.experimentNumber}`}>
+          <span className={`siteInner`} style={{zIndex: 0}}>
+            {this.renderScrollGroup(settings)}
+          </span>
+          <span className="siteHeader" {...headerAttrs}>
+            <h2 {...headerSpanAttrs}><span>Interface</span><br></br><span>Interspace</span></h2>
+            {/* <h3>Refresh for fresh.</h3> */}
+          </span>
+          <span className="siteCopy" {...svgAttrs}>
+            <h2>Scroll to Interact<br></br></h2>
+            <svg viewBox="0 0 154.5 225">
+              <g id="QLOSG5"><path d="M88,0c-.08,1.16-.14,183.22-.1,184.06l51.39-51.79,15.37,16c-6.16,6-75.6,75.52-76.66,76.76-.33,0-65.22-64.71-77.84-77.32l14.9-13.9c16.56,16.75,33.68,33.07,51.72,51.33C67,182.54,67.08,1,67,0Z" transform="translate(-0.16 0)"/></g>
+            </svg>
+          </span>
+          {/* {this.renderGroups.map(e => e)} */}
+        </div>
       </div>
     )  
   }

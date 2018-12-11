@@ -189,9 +189,10 @@ $(function() {
         let y = height / 2; 
         let r = 10 + (v.length - i) * 15; 
         let label = i
+        console.log(i)
 
         return new Circle(x, y, r, MatterComps, 
-            {label: label, "isStatic": true}, 
+            {label: label, aspect: "test", "isStatic": true}, 
             {
                 fillStyle: circFill,
                 strokeStyle: circStroke,
@@ -356,18 +357,20 @@ $(function() {
         }
     }
 
-    function addText(r, w) {
-        let ran = Math.random * 30; 
+    function addText(a, w) {
+        let ran = Math.random() * 30; 
         let color = `rgba(${138 + ran}, ${25 - (ran / 2)}, ${5}, ${0.945})`;
-        console.log((w.id + 1) * r * 2 + 50)
+
+        let r = a.circleRadius
+        let num = r + 34
+        let character = String.fromCharCode(num);
 
         let $text = $("<span>")
-            .text(String.fromCharCode(Math.round((w.id + 1) * r * 3 + 11)))
+            .text(character)
             .addClass("textNode")
             .css({
-                fontSize: r * 3,
+                fontSize: r * 2,
                 color: color,
-                // transform: `translate(${-width / 2}px, ${-width / 2}px)`
             });
 
         
@@ -427,6 +430,7 @@ $(function() {
                 pos = bodyB.position;
 
                 addCol(pos.x, pos.y, r)
+                addText(bodyB, bodyA)
             }
             if(bodyB.label !== "wall") {
                 volume = areaScale(bodyB.area)
@@ -436,9 +440,8 @@ $(function() {
                 pos = bodyB.position;
 
                 addCol(pos.x, pos.y, r)
-                addText(r, bodyA)
+                addText(bodyB, bodyA)
             }
-
             if(bodyA.label === "wall") {
                 if(window.shouldPlayAudio) {
                     soundId = bodyA.soundId; 

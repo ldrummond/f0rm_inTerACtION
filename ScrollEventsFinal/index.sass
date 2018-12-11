@@ -13,11 +13,15 @@ html, body
   width: 100vw
   height: 100vh
   display: none
-  position: absolute
-  background: rgba(100, 100, 80, 0.05)
+  position: fixed
+  overflow: hidden
+  // background: rgba(100, 100, 80, 0.05)
+  background: #fff
+
 
 .siteInner
-  position: absolute
+  position: fixed
+  overflow: hidden
   top: 0
   left: 0
   width: 100%
@@ -30,15 +34,30 @@ html, body
 
 .siteHeader
   position: absolute
-  top: 30px
-  left: 0
+  top: 52%
+  left: 0%
+  // transform: rotate(90deg)
   text-align: center
   width: 100%
+  margin: auto
+  z-index: -1
+  font-family: 'Saira Semi Condensed', sans-serif
   h2
     font-weight: 400
-    font-size: 42px
-    font-family: sans-serif
-    color: rgba(0, 0, 0, 0.5)
+    font-size: 64px
+    line-height: 70px
+    // color: rgba(0, 0, 0, 0.5)
+    color: #4f493c
+    margin: auto
+    width: 380px
+    span:first-of-type
+      height: 40px
+      display: block
+      text-align: left
+    span:last-of-type
+      height: 40px
+      display: block
+      text-align: right
 
 .siteCopy
   position: absolute
@@ -51,24 +70,24 @@ html, body
   align-items: center
   flex-direction: column
   margin-top: -350px
+  font-family: 'Saira Semi Condensed', sans-serif
+  font-style: italic
   h2
     font-size: 40px
     margin-bottom: 40px
     line-height: 60px
     font-weight: 400
-    font-family: sans-serif
-    color: rgba(0, 0, 0, 0.5)
+    color: rgba(0, 0, 0, 0.6)
     text-align: center
-    font-style: italic
     em
       font-style: normal
       font-weight: 600
       letter-spacing: 1px
       line-height: 80px
   svg 
-    width: 70px
-    height: 70px 
-    fill: rgba(0, 0, 0, 0.4)
+    width: 50px
+    height: 40px 
+    fill: rgba(0, 0, 0, 0.5)
     margin-left: -10px
 
 .scrollWindowWrapper
