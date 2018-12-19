@@ -1,4 +1,5 @@
-# f0rm_inTerACtION
+# Form and Interaction
+- Fall 2018
 
 1. Reference Repository
 http://lucasbuilds.site/f0rm_inTerACtION/ReferenceRepo
@@ -19,4 +20,4 @@ http://lucasbuilds.site/f0rm_inTerACtION/ScrollEventsFinal/
 http://lucasbuilds.site/f0rm_inTerACtION/ScrollEventsFinal/
 
 7. Resize Events Final 
-http://lucasbuilds.site/f0rm_inTerACtION/ResizeSoundBounce/
+http://lucasbuilds.site/f0rm_inTerACtION/ResizeEventsFinal/
